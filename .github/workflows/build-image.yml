@@ -15,19 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Git Semantic Version
-        uses: PaulHatch/semantic-version@v5.4.0
-        id: versionId
-        with:
-          major_pattern: "major"
-          minor_pattern: "feat:"
-          tag_prefix: "tag"
-          version_format: "${tag}"
-        #   version_format: "${major}.${minor}.${patch}-prerelease${increment}"
-
       - name: Build Docker Image.
         env:
           IMAGE_NAME: "astro-app"
-          NEW_VERSION: ${{steps.versionId.outputs.version}}
           TAG: ${{github.event.inputs.app_tag}}
-        run: docker build --tag ${IMAGE_NAME}:${TAG}-${NEW_VERSION} .
+        run: docker build --tag ${IMAGE_NAME}:${TAG} .
