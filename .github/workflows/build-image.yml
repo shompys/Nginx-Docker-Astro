@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - "*"
+  workflow_dispatch:
+    inputs:
+      app_tag:
+        description: "Name of tag"
+        required: true
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
