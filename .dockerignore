@@ -5,3 +5,4 @@ Dockerfile
 dist
 README.md
 .DS_Store
+.github
