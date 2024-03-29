@@ -29,4 +29,5 @@ jobs:
         env:
           IMAGE_NAME: "astro-app"
           NEW_VERSION: ${{steps.versionId.outputs.version}}
-        run: docker build --tag ${IMAGE_NAME}:${github.event.inputs.app_tag}-${NEW_VERSION} .
+          TAG: ${{github.event.inputs.app_tag}}
+        run: docker build --tag ${IMAGE_NAME}:${TAG}-${NEW_VERSION} .
